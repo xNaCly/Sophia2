@@ -1,0 +1,4 @@
+# comment
+let a = 25
+a = 25 * 12 + 3
+print a

@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Lexer *lexer_new(char *input) {
+Lexer *lexer_new(const char *input) {
   Lexer *l = NULL;
   if (l = malloc(sizeof(Lexer)), l == NULL) {
     error("Failed to allocate lexer");
@@ -23,9 +23,22 @@ static void advance(Lexer *l) {
   l->pos++;
 }
 
+static int isInt(char c) { return (c >= '0' && c <= '9'); }
+static int isLetter(char c) { return (c >= 'a' && c <= 'Z'); }
+static int isAlpha(char c) { return isInt(c) || isLetter(c); }
+
 static Token *number(Lexer *l) {
   char c = peek(l);
-  while ((c >= '0' && c <= '9') || c == '.') {
+  while (isInt(c) || c == '.') {
+    TODO();
+  }
+  advance(l);
+  return NULL;
+}
+
+static Token *ident(Lexer *l) {
+  char c = peek(l);
+  while (isAlpha(c) || c == '_' || c == '-') {
     TODO();
   }
   advance(l);
@@ -58,8 +71,10 @@ Token *lexer_next(Lexer *l) {
     t = TOKEN_BRACE_RIGHT;
     break;
   default:
-    if (c >= '0' && c <= '9') {
+    if (isInt(c)) {
       return number(l);
+    } else if (isLetter(c)) {
+      return ident(l);
     } else {
       fprintf(stderr, "Unknown character '%c'\n", c);
     }

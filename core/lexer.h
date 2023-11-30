@@ -5,10 +5,10 @@
 
 typedef struct Lexer {
   int pos;
-  char *input;
+  const char *input;
 } Lexer;
 
-Lexer *lexer_new(char *input);
+Lexer *lexer_new(const char *input);
 
 Token *lexer_next(Lexer *l);
 
