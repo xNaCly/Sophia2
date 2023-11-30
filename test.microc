@@ -1,4 +1,27 @@
-# comment
-let a = 25
+# variables
+a := 25 # inferred variable type
 a = 25 * 12 + 3
-print a
+
+# built-in, accepting a variable amount of arguments
+print(a)
+println(a)
+
+# function 
+function square(x: number): number {
+	return x*x
+}
+
+# function call
+let r = square(12)
+println("12^2=", r)
+
+# control flow
+if true && (true || false) {
+	println("true")
+}
+
+for i := 0; i < 10; i++ {
+	println(square(i))
+}
+
+
