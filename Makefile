@@ -5,15 +5,16 @@ FLAGS := -fdiagnostics-color=always \
 		 -Wextra \
 		 -Wshadow \
 		 -Wundef \
+		 -g3 \
 		 -fno-common
 
-source := $(shell find ./core -name "*.c")
+source := $(shell find ./sophia -name "*.c")
 
 run: build
-	./calc
+	./sophia2 $(arg)
 
 build: 
-	gcc $(FLAGS) $(source) main.c -o calc
+	gcc $(FLAGS) $(source) main.c -o sophia2
 
 clean:
-	rm -fr calc
+	rm -fr sophia2

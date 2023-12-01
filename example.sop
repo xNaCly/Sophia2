@@ -1,10 +1,10 @@
 # variables
-a := 25 # inferred variable type
+var a = 25 # inferred variable type
 a = 25 * 12 + 3
+var name = "test"
 
 # built-in, accepting a variable amount of arguments
 print(a)
-println(a)
 
 # function 
 function square(x: number): number {
@@ -12,15 +12,15 @@ function square(x: number): number {
 }
 
 # function call
-let r = square(12)
+var r = square(12)
 println("12^2=", r)
 
 # control flow
-if true && (true || false) {
+if true and (true or false) {
 	println("true")
 }
 
-for i := 0; i < 10; i++ {
+for var i = 0; i < 10; i++ {
 	println(square(i))
 }
 
